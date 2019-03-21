@@ -1,6 +1,6 @@
 package mason;
 
-import sim.engine.SimState;
+import sim.engine.*;
 import sim.util.*;
 import sim.field.continuous.*;
 import sim.field.network.*;
@@ -17,6 +17,19 @@ import sim.field.network.*;
 public class Students extends SimState {
 
     public Continuous2D yard = new Continuous2D(1.0, 100, 100);
+
+    public double TEMPERING_CUT_DOWN = 0.99;
+    public double TEMPERING_INITIAL_RANDOM_MULTIPLIER = 10.0;
+    public boolean tempering = true;
+
+    public boolean isTempering() {
+        return tempering;
+    }
+
+    public void setTempering(boolean val) {
+        tempering = val;
+    }
+
     public int numStudents = 50;
     double forceToSchoolMultiplier = 0.01;
     double randomMultiplier = 0.1;
@@ -73,6 +86,20 @@ public class Students extends SimState {
     @Override
     public void start() {
         super.start();
+        
+        // add the tempering agent
+        if (tempering) {
+            randomMultiplier = TEMPERING_INITIAL_RANDOM_MULTIPLIER;
+            schedule.scheduleRepeating(schedule.EPOCH, 1, new Steppable() {
+                @Override
+                public void step(SimState state) {
+                    if (tempering) {
+                        randomMultiplier *= TEMPERING_CUT_DOWN;
+                    }
+                }
+            });
+        }
+        
         // clear the yard
         yard.clear();
         // clear the buddies

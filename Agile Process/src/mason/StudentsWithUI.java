@@ -36,6 +36,14 @@ public class StudentsWithUI extends GUIState {
         c.setVisible(true);
     }
 
+    public static Object getInfo() {
+        try {
+            return new java.net.URL("http://cyc.tij.uabc.mx/sim.html");
+        } catch (java.net.MalformedURLException e) {
+            return "Oops";
+        }
+    }
+
     public StudentsWithUI() {
         super(new Students(System.currentTimeMillis()));
     }
