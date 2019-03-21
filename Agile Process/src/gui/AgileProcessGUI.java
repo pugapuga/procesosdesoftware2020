@@ -7,7 +7,7 @@ package gui;
 
 import Task_board.Board;
 import Task_board.SwimLane;
-import Task_board.Task;
+import Task_board.Issue;
 import javax.swing.JComboBox;
 import javax.swing.JList;
 
@@ -248,7 +248,7 @@ public class AgileProcessGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextFieldTaskNameActionPerformed
 
     private void jButtonAddTaskActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddTaskActionPerformed
-    Task myTask = new Task("x",jTextFieldTaskName.getText(),"description", board, board.getSwimLanes().get(0)); 
+    Issue myTask = new Issue("x",jTextFieldTaskName.getText(),"description", board, board.getSwimLanes().get(0)); 
     board.getSwimLanes().get(0).getTasks().add(myTask);
     board.getTasks().add(myTask);
     ((JComboBox)jPanelBoard.getComponent(0)).addItem(myTask);// TODO add your handling code here:

@@ -1,64 +1,26 @@
 package Task_board;
 
-public class Task {
+import java.util.*;
 
-    private String id;
-    private String subject;
-    private String description;
-    public Board board;
-    public SwimLane swimLane;
+public class Task extends Issue {
+
+    private Vector<SubTask> subTasks = new Vector<SubTask>();
 
     public Task(String id, String subject, String description, Board board, SwimLane swimLane) {
-        this.id = id;
-        this.subject = subject;
-        this.description = description;
-        this.board = board;
-        this.swimLane = swimLane;
+        super(id, subject, description, board, swimLane);
     }
 
-    public String getId() {
-        return id;
+    public Vector<SubTask> getSubTasks() {
+        return subTasks;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getSubject() {
-        return subject;
-    }
-
-    public void setSubject(String subject) {
-        this.subject = subject;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Board getBoard() {
-        return board;
-    }
-
-    public void setBoard(Board board) {
-        this.board = board;
-    }
-
-    public SwimLane getSwimLane() {
-        return swimLane;
-    }
-
-    public void setSwimLane(SwimLane swimLane) {
-        this.swimLane = swimLane;
+    public void setSubTasks(Vector<SubTask> subTasks) {
+        this.subTasks = subTasks;
     }
 
     @Override
     public String toString() {
-        return "Task{" + "id=" + id + ", subject=" + subject + ", description=" + description + '}';
+        return "Task{" + "subTasks=" + subTasks + '}';
     }
-
+    
 }

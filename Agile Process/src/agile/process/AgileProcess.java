@@ -7,7 +7,7 @@ package agile.process;
 
 import Task_board.Board;
 import Task_board.SwimLane;
-import Task_board.Task;
+import Task_board.Issue;
 
 /**
  *
@@ -34,7 +34,7 @@ public class AgileProcess {
         
         System.out.println(myBoard);
         
-        Task task1 = new Task("T1","Tarea 1", "Descripcion", myBoard, swimLane1);
+        Issue task1 = new Issue("T1","Tarea 1", "Descripcion", myBoard, swimLane1);
         swimLane1.getTasks().add(task1);
         
         System.out.println(myBoard);

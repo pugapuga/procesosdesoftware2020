@@ -1,19 +1,19 @@
 package Task_board;
 
 import java.util.Vector;
-import Task_board.Task;
+import Task_board.Issue;
 
 public class SwimLane {
 	private String name;
 	private Board board;
-	private Vector<Task> tasks = new Vector<Task>();
+	private Vector<Issue> tasks = new Vector<Issue>();
 
     public SwimLane(String name, Board board) {
         this.name = name;
         this.board = board;
     }
 
-    public Vector<Task> getTasks() {
+    public Vector<Issue> getTasks() {
         return tasks;
     }
 
