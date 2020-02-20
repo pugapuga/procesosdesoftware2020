@@ -5,8 +5,14 @@
  */
 package softwareprocess;
 
+import AgileTeam.AgileTeam;
+import AgileTeam.Developer;
+import AgileTeam.Sprint;
+import AgileTeam.UserHistory;
 import TaskBoard.Task;
 import TaskBoard.TaskBoard;
+import Team.Team;
+import Team.TeamMember;
 
 /**
  *
@@ -19,14 +25,22 @@ public class SoftwareProcess {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        TaskBoard taskBoard = new TaskBoard("Mi tablero");
+        AgileTeam agileTeam = new AgileTeam("T1");
         
-        Task task = new Task("Tarea", taskBoard, taskBoard.getSwimLanes().get(0));
+        Developer developer = new Developer("Pepe");
         
-        taskBoard.getTasks().add(task);
+        agileTeam.getTeamMembers().add(developer);
+        
+        Sprint sprint = new Sprint("Mi Sprint");
+        
+        UserHistory userHistory = new UserHistory("Historia", sprint, sprint.getSwimLanes().get(0),developer);
+        
+        sprint.getTasks().add(userHistory);
 
         
-        System.out.println(taskBoard);
+        System.out.println(sprint);
+        
+        System.out.println(agileTeam);
         
     }
     
