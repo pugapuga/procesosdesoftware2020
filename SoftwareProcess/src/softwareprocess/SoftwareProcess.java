@@ -5,14 +5,8 @@
  */
 package softwareprocess;
 
-import AgileTeam.AgileTeam;
-import AgileTeam.Developer;
-import AgileTeam.Sprint;
-import AgileTeam.UserHistory;
-import TaskBoard.Task;
-import TaskBoard.TaskBoard;
-import Team.Team;
-import Team.TeamMember;
+import sim.engine.SimState;
+import softwareprocess.model.Students;
 
 /**
  *
@@ -25,23 +19,16 @@ public class SoftwareProcess {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        AgileTeam agileTeam = new AgileTeam("T1");
-        
-        Developer developer = new Developer("Pepe");
-        
-        agileTeam.getTeamMembers().add(developer);
-        
-        Sprint sprint = new Sprint("Mi Sprint");
-        
-        UserHistory userHistory = new UserHistory("Historia", sprint, sprint.getSwimLanes().get(0),developer);
-        
-        sprint.getTasks().add(userHistory);
+        SimState state = new Students(System.currentTimeMillis());
+        state.start();
+        do {
+            if (!state.schedule.step(state)) {
+                break;
+            }
+        } while (state.schedule.getSteps() < 5000);
+        state.finish();
+        System.exit(0);
 
-        
-        System.out.println(sprint);
-        
-        System.out.println(agileTeam);
-        
     }
-    
+
 }
